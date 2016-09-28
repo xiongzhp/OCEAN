@@ -41,7 +41,7 @@ DATABASES = {
     'chembl_20':{
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
     # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'chembl_20',  # Or path to database file if using sqlite3.
+        'NAME': 'chembl_21',  # Or path to database file if using sqlite3.
         #         # The following settings are not used with sqlite3:
         'USER': 'ocean_user',
         'PASSWORD': 'ocean_pw',
@@ -117,7 +117,7 @@ CMPD_NM_CUTOFF = 10000
 PARALLEL_PROCESSES =  4 # 45 # for server, 4 for workstation
 ORGANISM = "Homo sapiens"
 
-CHEMBL_VERSION = "chembl_%d" % (20)
+CHEMBL_VERSION = "chembl_%d" % (21)
 
 SUBDOMAIN = 'ocean'
 HTTP_PORT = '8081'
