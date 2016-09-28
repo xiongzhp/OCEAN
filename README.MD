@@ -9,7 +9,11 @@ For more details please feel free to read the [paper](http://pubs.acs.org/doi/ab
 Software dependencies
 --------
 
-We recommend to use [myChembl20-VM](http://chembl.blogspot.de/2015/07/mychembl-20-has-landed.html) which has almost everything you need to run OCEAN.
+I recommend to use [myChembl21-VM](http://chembl.blogspot.de/2015/07/mychembl-20-has-landed.html) which has almost everything you need to run OCEAN.
+
+Bare metal - if you have a clean Ubuntu or CentOS box with root access and want to install myChEMBL software directly, then you may run:
+
+* `wget https://raw.githubusercontent.com/chembl/mychembl/master/bootstrap.sh && chmod +x bootstrap.sh && bash bootstrap.sh
 
 Nevertheless here are the core-depencies:
 
@@ -27,18 +31,9 @@ Optional dependencies
 * `pillow (2.6.1)`
 * `images2gif (1.0.1)`
 
-Installation using myCHEMBL-VM
+Easy setup using myCHEMBL-VM
 --------
 Prepare and activate a virtual environment for OCEAN:
-```
-# create a virtualEnv for OCEAN
-virtualenv --system-site-packages ocean_env
-
-# activate ocean_env
-source ocean_env/bin/activate
-
-# install Django 1.7.1
-pip install Django==1.7.1
 ```
 Get a clone of OCEAN from the Repo:
 ```
@@ -72,10 +67,10 @@ psql chembl_17 < postgres_createOceanDB.sql
 psql chembl_17 < postgres_createTargetDict.sql
 ./importChembl17Tables.sh
 ```
-For ChEMBL20-data you should:
+For ChEMBL21-data you should:
 ```
-psql chembl_20 < postgres_createOceanDB.sql
-./importOcean20DB.sh
+psql chembl_21 < postgres_createOceanDB.sql
+./importOcean21DB.sh
 ```
 It's time to start OCEAN:
 ```
