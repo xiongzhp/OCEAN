@@ -108,7 +108,7 @@ class Target_Compounds:
             if datasource is settings.DATASOURCES.CHEMBL:
                 chembl_connection = DB_connector(settings.CHEMBL_VERSION)
                 chembl_connection.setFilter("parallel")
-                t = set(chembl_connection.getTargets())
+                t = set(chembl_connection.getTargetName())
                 Target_Compounds.setTargets(datasource,t)
                 chembl_connection.close()
             else:
