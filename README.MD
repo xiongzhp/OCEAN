@@ -13,7 +13,7 @@ I recommend to use [myChembl21-VM](http://chembl.blogspot.de/2015/07/mychembl-20
 
 Bare metal - if you have a clean Ubuntu or CentOS box with root access and want to install myChEMBL software directly, then you may run:
 
-* `wget https://raw.githubusercontent.com/chembl/mychembl/master/bootstrap.sh && chmod +x bootstrap.sh && bash bootstrap.sh
+* `wget https://raw.githubusercontent.com/chembl/mychembl/master/bootstrap.sh && chmod +x bootstrap.sh && bash bootstrap.sh`
 
 Nevertheless here are the core-depencies:
 
