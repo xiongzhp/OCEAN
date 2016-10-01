@@ -33,8 +33,7 @@ Optional dependencies
 
 Easy setup using myCHEMBL-VM
 --------
-Prepare and activate a virtual environment for OCEAN:
-```
+
 Get a clone of OCEAN from the Repo:
 ```
 git clone https://www.github.com/rdkit/OCEAN.git
@@ -64,7 +63,7 @@ psql chembl_17 < postgres_createOceanDB.sql
 
 # Chembl17 is not a part of myChembl20-VM, so we need to create and populate
 # a few tables (duration <10 sec)
-psql chembl_17 < postgres_createTargetDict.sql
+psql chembl_17 < postgres_createChembl17Tables.sql
 ./importChembl17Tables.sh
 ```
 For ChEMBL21-data you should:
