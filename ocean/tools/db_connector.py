@@ -67,6 +67,29 @@ class DB_connector:
         iterator = self.cursor.__iter__()
         names = [x[0] for x in self.cursor.description]
         return names,iterator
+        
+    def getTargets(self):
+        if self.db_type == 'postgre':
+            query = "select target_chembl_id,pa.cs from (select target_chembl_id,count(molregno) cs from %s group by target_chembl_id) as pa where cs>%d" % (
+            ocean.settings.OCEAN_DB_TABLE, ocean.settings.CMPD_COUNT_CUTOFF - 1)
+        else:
+            if self.filter:
+                if self.filter == "parallel":
+                    query = "select target_chembl_id,cs from (select /*+ PARALLEL({0},4) */ target_chembl_id,count(molregno) cs from {0} group by target_chembl_id) where cs>{1}".format(
+                        ocean.settings.OCEAN_DB_TABLE, ocean.settings.CMPD_COUNT_CUTOFF - 1)
+                else:
+                    query = "select distinct target_chembl_id from %s where %s" % (
+                    ocean.settings.OCEAN_DB_TABLE, self.filter)
+
+            else:
+                query = "select min(target_chembl_id) from %s group by target_chembl_id" % ocean.settings.OCEAN_DB_TABLE
+
+        final_query = query
+        print "query is", final_query
+        self.cursor.execute(final_query)
+
+        result = [t[0] for t in self.cursor.__iter__()]
+        return result
 
     def getCmpdsForTarget2(self,target_id):
         query =  "select molregno,target_pref_name,organism from %s where target_chembl_id='%s' %s"
